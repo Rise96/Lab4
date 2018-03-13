@@ -4,45 +4,42 @@ namespace Lab4
 {
     class ProcessingOfTheMassive
     {
-        public int[] FindSumClosestToMaxNumber(int[] arrayOfNumbers)
+        public int[] FindAndSwapSumClosestToMaxNumber(int[] arrayOfNumbers)
         {
             int maxNumber = MaxNumberInMassive(arrayOfNumbers);
-            int firstElem= 0 ;
-            int secondElem =  1 ;
+            int firstElement = 0;
+            int secondElement = 1;
             int differenceWithMax = Math.Abs(maxNumber - (arrayOfNumbers[0] + arrayOfNumbers[1]));
-            for (int i = 0; i < arrayOfNumbers.Length; i++) 
+            for (int i = 0; i < arrayOfNumbers.Length - 1; i++)
             {
-                for(int j=1;j<arrayOfNumbers.Length;j++)
+                for (int j = i + 1; j < arrayOfNumbers.Length; j++)
                 {
-                    if (i != j)
+                    if (differenceWithMax > (Math.Abs(maxNumber - (arrayOfNumbers[i] + arrayOfNumbers[j]))))
                     {
-                        if(differenceWithMax>(Math.Abs(maxNumber - (arrayOfNumbers[i] + arrayOfNumbers[j]))))
-                        {
-                            firstElem = i;
-                            secondElem = j;
-                            differenceWithMax = Math.Abs(maxNumber - (arrayOfNumbers[i] + arrayOfNumbers[j]));
-                        }
+                        firstElement = i;
+                        secondElement = j;
+                        differenceWithMax = Math.Abs(maxNumber - (arrayOfNumbers[i] + arrayOfNumbers[j]));
                     }
                 }
             }
-            arrayOfNumbers = Swap2NumbersInArray(arrayOfNumbers, firstElem, secondElem);
+            arrayOfNumbers = Swap2NumbersInArray(arrayOfNumbers, firstElement, secondElement);
             return arrayOfNumbers;
         }
 
         private int MaxNumberInMassive(int[] arrayOfNumbers)
         {
-            int MaxNumber = arrayOfNumbers[0];
+            int maxNumber = arrayOfNumbers[0];
             for (int i = 0; i < arrayOfNumbers.Length; i++)
             {
-                if (MaxNumber < arrayOfNumbers[i])
+                if (maxNumber < arrayOfNumbers[i])
                 {
-                    MaxNumber = arrayOfNumbers[i];
+                    maxNumber = arrayOfNumbers[i];
                 }
             }
-            return MaxNumber;
+            return maxNumber;
         }
 
-        private int[] Swap2NumbersInArray(int[] arrayOfNumbers, int indexOf1stElem,int indexOf2ndElem)
+        private int[] Swap2NumbersInArray(int[] arrayOfNumbers, int indexOf1stElem, int indexOf2ndElem)
         {
             int saverOf1stElem = arrayOfNumbers[indexOf1stElem];
             arrayOfNumbers[indexOf1stElem] = arrayOfNumbers[indexOf2ndElem];
