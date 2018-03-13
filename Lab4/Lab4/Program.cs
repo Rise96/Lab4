@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lab4
 {
@@ -10,6 +6,19 @@ namespace Lab4
     {
         static void Main(string[] args)
         {
+            int[] arrayOfNumbers = {18,2,7,9,3,5,8,2,3 };
+            for (int i = 0; i < arrayOfNumbers.Length; i++)
+            {
+                Console.Write($"{arrayOfNumbers[i]} ");
+            }
+            Console.WriteLine(" ");
+            ProcessingOfTheMassive processor = new ProcessingOfTheMassive();
+            int[] arrayOfNumbers2 = processor.FindSumClosestToMaxNumber(arrayOfNumbers);
+            for (int i = 0; i < arrayOfNumbers.Length; i++)
+            {
+                Console.Write($"{arrayOfNumbers2[i]} ");
+            }
+            Console.ReadLine();
         }
     }
 }
