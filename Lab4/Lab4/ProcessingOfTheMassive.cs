@@ -1,57 +1,53 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Lab4
 {
     class ProcessingOfTheMassive
     {
-        public int[] FindSumClosestToMaxNumber(int[] massiveOfNumbers)
+        public int[] FindSumClosestToMaxNumber(int[] arrayOfNumbers)
         {
-            int MaxNumber = MaxNumberInMassive(massiveOfNumbers);
+            int maxNumber = MaxNumberInMassive(arrayOfNumbers);
             int firstElem= 0 ;
             int secondElem =  1 ;
-            int differenceWithMax = Math.Abs(MaxNumber - (massiveOfNumbers[0] + massiveOfNumbers[1]));
-            for (int i = 0; i < massiveOfNumbers.Length; i++) 
+            int differenceWithMax = Math.Abs(maxNumber - (arrayOfNumbers[0] + arrayOfNumbers[1]));
+            for (int i = 0; i < arrayOfNumbers.Length; i++) 
             {
-                for(int j=1;j<massiveOfNumbers.Length;j++)
+                for(int j=1;j<arrayOfNumbers.Length;j++)
                 {
                     if (i != j)
                     {
-                        if(differenceWithMax>(Math.Abs(MaxNumber - (massiveOfNumbers[i] + massiveOfNumbers[j]))))
+                        if(differenceWithMax>(Math.Abs(maxNumber - (arrayOfNumbers[i] + arrayOfNumbers[j]))))
                         {
                             firstElem = i;
                             secondElem = j;
-                            differenceWithMax = Math.Abs(MaxNumber - (massiveOfNumbers[i] + massiveOfNumbers[j]));
+                            differenceWithMax = Math.Abs(maxNumber - (arrayOfNumbers[i] + arrayOfNumbers[j]));
                         }
                     }
                 }
             }
-            massiveOfNumbers = Swap2NumbersInMassive(massiveOfNumbers, firstElem, secondElem);
-            return massiveOfNumbers;
+            arrayOfNumbers = Swap2NumbersInArray(arrayOfNumbers, firstElem, secondElem);
+            return arrayOfNumbers;
         }
 
-        private int MaxNumberInMassive(int[] massiveOfNumbers)
+        private int MaxNumberInMassive(int[] arrayOfNumbers)
         {
-            int MaxNumber = massiveOfNumbers[0];
-            for (int i = 0; i < massiveOfNumbers.Length; i++)
+            int MaxNumber = arrayOfNumbers[0];
+            for (int i = 0; i < arrayOfNumbers.Length; i++)
             {
-                if (MaxNumber < massiveOfNumbers[i])
+                if (MaxNumber < arrayOfNumbers[i])
                 {
-                    MaxNumber = massiveOfNumbers[i];
+                    MaxNumber = arrayOfNumbers[i];
                 }
             }
             return MaxNumber;
         }
 
-        private int[] Swap2NumbersInMassive(int[] massiveOfNumbers, int indexOf1stElem,int indexOf2ndElem)
+        private int[] Swap2NumbersInArray(int[] arrayOfNumbers, int indexOf1stElem,int indexOf2ndElem)
         {
-            int saverOf1stElem = massiveOfNumbers[indexOf1stElem];
-            massiveOfNumbers[indexOf1stElem] = massiveOfNumbers[indexOf2ndElem];
-            massiveOfNumbers[indexOf2ndElem] = saverOf1stElem;
-            return massiveOfNumbers;
+            int saverOf1stElem = arrayOfNumbers[indexOf1stElem];
+            arrayOfNumbers[indexOf1stElem] = arrayOfNumbers[indexOf2ndElem];
+            arrayOfNumbers[indexOf2ndElem] = saverOf1stElem;
+            return arrayOfNumbers;
         }
     }
 }
